@@ -66,3 +66,5 @@ print(output)
 
 ### Reason ###
 # The second comparison, does a simple value comparison between a and b variables. 
+# resource(s)
+# - https://rushter.com/blog/python-integer-implementation/
