@@ -37,3 +37,32 @@ s.split(':')  # ['ab cd', 'ef gh']
 
 import re
 re.split('[: ]', s)  # ['ab', 'cd', 'ef', 'gh']
+
+# #### 3. Topic var comparison ################
+a = 301
+b = 301
+output = a is b
+print(output)
+
+### Output ###
+# False
+
+### Reason ###
+# Small integer objects in a range of -5 to 256 are always pre-allocated during initialization. Because Python integers are immutable, 
+# we can use them as singletons. Every time you need to create small integer instead of creating new object Python just points to already allocated one. 
+# Thereby it saves a lot of space and computation for commonly-used integers.
+# Interestingly enough, the PyLongObject structure takes at least 28 bytes for every allocated integer and therefore takes three times as much 
+# memory as a simple 64-bit C integer.
+# The integers -5 to 256 are pre-allocated so when you assign a variable to these, you don't need to create a new object.
+# The compiler does some clever work too when you run this in a script (or in a single block in a REPL)
+
+a = 3
+b = 3
+output = a == b
+print(output)
+
+### Output ###
+# True
+
+### Reason ###
+# The second comparison, does a simple value comparison between a and b variables. 
